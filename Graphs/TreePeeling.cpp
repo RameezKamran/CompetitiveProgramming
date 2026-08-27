@@ -1,5 +1,5 @@
 // algo to traverse nodes in a tree, degree wise
-int peel_tree(vi deg, vvi &adj,int n, int m){
+int peel_tree(vi &deg, vvi &adj,int n, int m){
     queue<int>q;
     for(int i=1; i<=n; ++i){
         if(deg[i] == 1){
