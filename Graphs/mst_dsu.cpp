@@ -55,3 +55,19 @@ public:
         sz[i] += sz[j];
     }
 };
+
+pair<long long, vector<Edge>> get_mst(int n, vector<Edge>& edges) {
+    sort(edges.begin(), edges.end());
+    DSU dsu(n);
+    long long total_weight = 0;
+    vector<Edge> mst_edges;
+
+    for (const auto& e : edges) {
+        if (dsu.unite(e.u, e.v)) {
+            total_weight += e.w;
+            mst_edges.push_back(e);
+            if ((int)mst_edges.size() == n - 1) break;
+        }
+    }
+    return {total_weight, mst_edges};
+}
